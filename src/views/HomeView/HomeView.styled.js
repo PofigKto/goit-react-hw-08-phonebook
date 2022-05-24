@@ -5,10 +5,12 @@ export const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  background: linear-gradient(lightblue, lightyellow);
 `;
 
 export const Title = styled.h1`
   font-weight: 500;
   font-size: 48;
   text-align: center;
+  color: blue;
 `;

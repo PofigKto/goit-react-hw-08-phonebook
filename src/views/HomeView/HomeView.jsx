@@ -4,9 +4,11 @@ import { Container, Title } from './HomeView.styled';
 const HomeView = () => (
   <Container>
     <Title>
-      Wellcome!!!
+      {/* Wellcome!!! */}
+      Доброго вечора, ми з України!
       <span role="img" aria-label="Иконка приветствия">
-        💁‍♀️
+        {/* 💁‍♀️ */}
+        💙💛
       </span>
     </Title>
   </Container>
