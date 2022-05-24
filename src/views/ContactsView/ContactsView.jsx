@@ -1,4 +1,4 @@
-import Form from '../../components/Form';
+import Form from '../../components/LoginForm';
 import ContactList from '../../components/ContactList';
 import Spinner from '../../components/Spinner';
 import Filter from '../../components/Filter';

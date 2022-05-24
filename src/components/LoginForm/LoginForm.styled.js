@@ -4,9 +4,12 @@ export const ContactForm = styled.form`
   display: flex;
   flex-direction: column;
   width: 600px;
-  border: 4px solid blue;
+  /* border: 2px solid blue; */
+  border-radius: 10px;
   padding: 15px;
   text-transform: capitalize;
+  box-shadow: 5px 5px 20px 0px #30ebfc;
+  background: linear-gradient(lightblue, lightyellow);
 `;
 
 export const FormLabel = styled.label`
@@ -37,6 +40,7 @@ export const FormButton = styled.button`
   padding: 5px;
   color: rgb(19, 61, 248);
   background-color: rgb(234, 255, 47);
-  border: 3px solid darkslateblue;
+  border: 3px solid yellow;
+  box-shadow: 5px 5px 20px 5px #30ebfc;
   border-radius: 10px;
 `;

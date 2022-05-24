@@ -2,6 +2,7 @@ import { lazy, Suspense } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import AppBar from './Appbar';
 import Container from './Container';
+// import NotFoundView from '../views/NotFoundView';
 // import Loader from './Loader';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -18,7 +19,8 @@ const ContactsView = lazy(() => import('../views/ContactsView/ContactsView'));
 // const MoviesReviews = lazy(() =>
 //   import('../views/MoviesReviews/MoviesReviews')
 // );
-// const NotFoundView = lazy(() => import('../views/NotFoundView'));
+const LoginView = lazy(() => import('../views/LoginView/LoginView'));
+const NotFoundView = lazy(() => import('../views/NotFoundView'));
 
 export const App = () => {
   return (
@@ -34,15 +36,12 @@ export const App = () => {
         <Routes>
           <Route path="/" element={<HomeView />}></Route>
           <Route path="contacts" element={<ContactsView />}>
-            {/* <Route index element={<SearchMovieByName />}></Route> */}
-            {/* сюди рендерим компонент, який відповідає за показування одного лише фільму */}
-            {/* <Route path=":movieId" element={<MovieDetailsView />}> */}
-            {/* вложені елементи, що рендяряться внизу на тій же сторінці що і карточка фільму,  */}
-            {/* <Route path="cast" element={<MoviesCast />}></Route> */}
-            {/* <Route path="reviews" element={<MoviesReviews />}></Route> */}
-            {/* </Route> */}
+            {' '}
           </Route>
-          {/* <Route path="*" element={<NotFoundView />}></Route> */}
+          {/* <Route path="register " element={<RegisterForm />}></Route> */}
+          <Route path="login" element={<LoginView />}></Route>
+          {/* <Route path="login " element={<UserMenu />}></Route> */}
+          <Route path="*" element={<NotFoundView />}></Route>
         </Routes>
       </Suspense>
       {/* </Suspense> */}
