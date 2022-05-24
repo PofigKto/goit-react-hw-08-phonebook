@@ -11,9 +11,8 @@ import './index.css';
 
 ReactDOM.render(
   <React.StrictMode>
-    <BrowserRouter>
-      {/* <BrowserRouter basename="/goit-react-hw-08-phonebook/"></BrowserRouter> */}
-
+    {/* <BrowserRouter> */}
+    <BrowserRouter basename="/goit-react-hw-08-phonebook/">
       <Provider store={store}>
         <App />
       </Provider>
