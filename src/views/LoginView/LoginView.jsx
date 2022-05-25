@@ -1,10 +1,12 @@
 import React from 'react';
 import LoginForm from '../../components/LoginForm';
-import { Container } from './LoginView.styled';
+import { Container, LoginFormContainer } from './LoginView.styled';
 
 const LoginView = () => (
   <Container>
-    <LoginForm />
+    <LoginFormContainer>
+      <LoginForm />
+    </LoginFormContainer>
   </Container>
 );
 

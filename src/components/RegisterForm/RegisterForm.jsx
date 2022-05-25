@@ -1,17 +1,25 @@
-import './LoginForm.styled.js';
-import { Form, FormLabel, FormInput, FormButton } from './LoginForm.styled';
+import './RegisterForm.styled';
+import { Form, FormLabel, FormInput, FormButton } from './RegisterForm.styled';
 import { useState } from 'react';
+// import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 
-export default function LoginForm(props) {
+export default function RegisterForm(props) {
+  const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  console.log(name);
   console.log(email);
   console.log(password);
+
+  // const dispatch = useDispatch();
+
   const handleChange = event => {
     // console.log(event);
     const { name, value } = event.currentTarget;
     switch (name) {
+      case 'name':
+        return setName(value);
       case 'email':
         setEmail(value);
         break;
@@ -31,12 +39,27 @@ export default function LoginForm(props) {
   };
 
   const resetForm = () => {
+    setName('');
     setEmail('');
     setPassword('');
   };
 
   return (
-    <Form onSubmit={handleSubmit}>
+    <Form onSubmit={handleSubmit} autoComplete="off">
+      <FormLabel>
+        Name :
+        <FormInput
+          type="text"
+          name="name"
+          value={name}
+          onChange={handleChange}
+          title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
+          // title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
+          required
+          placeholder="Enter your name"
+        />
+      </FormLabel>
+      <br />
       <FormLabel>
         Email :
         <FormInput
@@ -44,8 +67,6 @@ export default function LoginForm(props) {
           name="email"
           value={email}
           onChange={handleChange}
-          // title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-          // title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
           required
           placeholder="Enter your email"
         />
@@ -68,10 +89,10 @@ export default function LoginForm(props) {
           placeholder="Password must be min 6 and max 14 symbols"
         />
       </FormLabel>
-      <FormButton type="submit">Log in</FormButton>
+      <FormButton type="submit">Sing up</FormButton>
     </Form>
   );
 }
-LoginForm.propTypes = {
+RegisterForm.propTypes = {
   onSubmit: PropTypes.func.isRequired,
 };

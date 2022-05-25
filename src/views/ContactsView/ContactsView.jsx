@@ -1,4 +1,4 @@
-import Form from '../../components/LoginForm';
+import AddContactForm from '../../components/AddContactForm';
 import ContactList from '../../components/ContactList';
 import Spinner from '../../components/Spinner';
 import Filter from '../../components/Filter';
@@ -53,7 +53,7 @@ export default function ContactsView() {
   return (
     <Container>
       <h1>Phonebook</h1>
-      <Form onSubmit={addContact} />
+      <AddContactForm onSubmit={addContact} />
       <ToastContainer
         position={'top-center'}
         autoClose={3000}

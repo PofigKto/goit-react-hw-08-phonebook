@@ -7,21 +7,14 @@ import Container from './Container';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Spinner from './Spinner/Spinner';
+// import RegisterView from 'views/RegisterView';
 // import HomeView from '../views/HomeView';
 
 const HomeView = lazy(() => import('../views/HomeView/HomeView'));
 const ContactsView = lazy(() => import('../views/ContactsView/ContactsView'));
-// const SearchMovieByName = lazy(() => import('../views/SearchMovieByName'));
-// const MovieDetailsView = lazy(() =>
-// import('../views/MovieDetailsView/MovieDetailsView')
-// );
-// const MoviesCast = lazy(() => import('../views/MovieCast'));
-// const MoviesReviews = lazy(() =>
-//   import('../views/MoviesReviews/MoviesReviews')
-// );
 const LoginView = lazy(() => import('../views/LoginView/LoginView'));
 const NotFoundView = lazy(() => import('../views/NotFoundView'));
-
+const RegisterView = lazy(() => import('../views/RegisterView'));
 export const App = () => {
   return (
     <Container>
@@ -38,7 +31,7 @@ export const App = () => {
           <Route path="contacts" element={<ContactsView />}>
             {' '}
           </Route>
-          {/* <Route path="register " element={<RegisterForm />}></Route> */}
+          <Route path="register" element={<RegisterView />}></Route>
           <Route path="login" element={<LoginView />}></Route>
           {/* <Route path="login " element={<UserMenu />}></Route> */}
           <Route path="*" element={<NotFoundView />}></Route>

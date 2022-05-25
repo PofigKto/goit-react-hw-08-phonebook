@@ -22,7 +22,7 @@ export const AuthNavLink = styled(NavLink)`
   margin-right: 10px;
   border-radius: 10px;
   background: linear-gradient(lightblue, lightyellow);
-  box-shadow: 0 0 10px 1px #30ebfc;
+  box-shadow: 5px 5px 10px 1px #30ebfc;
   &.active {
     /* composes: link; */
     color: #2314f7;
