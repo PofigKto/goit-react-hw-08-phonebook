@@ -68,7 +68,8 @@ export default function RegisterForm(props) {
           value={email}
           onChange={handleChange}
           required
-          placeholder="Enter your email"
+          placeholder="name@example.com"
+          // placeholder="Enter your email"
         />
       </FormLabel>
       <br />
@@ -89,7 +90,7 @@ export default function RegisterForm(props) {
           placeholder="Password must be min 6 and max 14 symbols"
         />
       </FormLabel>
-      <FormButton type="submit">Sing up</FormButton>
+      <FormButton type="submit">Sign up</FormButton>
     </Form>
   );
 }

@@ -4,6 +4,6 @@ export const Header = styled.header`
   justify-content: space-between;
   align-items: center;
   min-height: 60px;
-  margin-bottom: 30px;
+  margin-bottom: 10px;
   box-shadow: -2px 20px 40px -12px rgb(0 0 0 / 30%);
 `;

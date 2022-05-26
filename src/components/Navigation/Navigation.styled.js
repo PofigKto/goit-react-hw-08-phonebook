@@ -11,8 +11,8 @@ export const LinkElem = styled(NavLink)`
   margin-right: 10px;
   border-radius: 10px;
   box-shadow: 5px 5px 10px 1px #30ebfc;
-  background: linear-gradient(lightblue, lightyellow);
-  /* background: linear-gradient(lightyellow, lightblue); */
+  /* background: linear-gradient(lightblue, lightyellow); */
+  background: linear-gradient(lightyellow, lightblue);
   &.active {
     /* composes: link; */
     color: #2314f7;

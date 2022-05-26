@@ -21,7 +21,8 @@ export const AuthNavLink = styled(NavLink)`
   font-size: 22px;
   margin-right: 10px;
   border-radius: 10px;
-  background: linear-gradient(lightblue, lightyellow);
+  background: linear-gradient(lightyellow, lightblue);
+  /* background: linear-gradient(lightblue, lightyellow); */
   box-shadow: 5px 5px 10px 1px #30ebfc;
   &.active {
     /* composes: link; */
