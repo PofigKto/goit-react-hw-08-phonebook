@@ -1,13 +1,18 @@
 import './LoginForm.styled.js';
 import { Form, FormLabel, FormInput, FormButton } from './LoginForm.styled';
 import { useState } from 'react';
-import PropTypes from 'prop-types';
+import { authOperations } from '../../redux/auth';
+import { useDispatch } from 'react-redux';
+// import PropTypes from 'prop-types';
 
 export default function LoginForm(props) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   console.log(email);
   console.log(password);
+
+  const dispatch = useDispatch();
+
   const handleChange = event => {
     // console.log(event);
     const { name, value } = event.currentTarget;
@@ -26,6 +31,7 @@ export default function LoginForm(props) {
   const handleSubmit = e => {
     e.preventDefault();
     console.log(email, password);
+    dispatch(authOperations.logIn({ email, password }));
     // props.onSubmit({ email, password });
     resetForm();
   };
@@ -72,6 +78,6 @@ export default function LoginForm(props) {
     </Form>
   );
 }
-LoginForm.propTypes = {
-  onSubmit: PropTypes.func.isRequired,
-};
+// LoginForm.propTypes = {
+//   onSubmit: PropTypes.func.isRequired,
+// };

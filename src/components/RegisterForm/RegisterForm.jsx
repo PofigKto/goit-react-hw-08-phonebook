@@ -1,8 +1,9 @@
 import './RegisterForm.styled';
 import { Form, FormLabel, FormInput, FormButton } from './RegisterForm.styled';
 import { useState } from 'react';
-// import { useDispatch } from 'react-redux';
-import PropTypes from 'prop-types';
+import { authOperations } from '../../redux/auth';
+import { useDispatch } from 'react-redux';
+// import PropTypes from 'prop-types';
 
 export default function RegisterForm(props) {
   const [name, setName] = useState('');
@@ -12,7 +13,7 @@ export default function RegisterForm(props) {
   console.log(email);
   console.log(password);
 
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
   const handleChange = event => {
     // console.log(event);
@@ -34,7 +35,9 @@ export default function RegisterForm(props) {
   const handleSubmit = e => {
     e.preventDefault();
     console.log(email, password);
-    // props.onSubmit({ email, password });
+    // при сабміті ми диспатчим цю операцію - визивамо функцію authOperations.register і передаємо туди обект нейм, емейл і паспорт
+    dispatch(authOperations.register({ name, email, password }));
+    // props.onSubmit({ name, email, password });
     resetForm();
   };
 
@@ -94,6 +97,6 @@ export default function RegisterForm(props) {
     </Form>
   );
 }
-RegisterForm.propTypes = {
-  onSubmit: PropTypes.func.isRequired,
-};
+// RegisterForm.propTypes = {
+//   onSubmit: PropTypes.func.isRequired,
+// };

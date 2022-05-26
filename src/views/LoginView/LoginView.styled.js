@@ -22,7 +22,7 @@ export const LoginFormContainer = styled.div`
 `;
 export const ImgContainer = styled.div`
   width: calc(20vw - 0px);
-  min-height: calc(50vh - 0px);
+  min-height: 50vh;
   /* width: 225px;
   height: 400px; */
   margin-right: 30px;

@@ -1,0 +1,41 @@
+import { createSlice } from '@reduxjs/toolkit';
+import authOperations from './authOperations';
+
+const initialState = {
+  user: { name: null, email: null },
+  token: null,
+  isLoggedIn: false,
+};
+
+const authSlice = createSlice({
+  name: 'auth',
+  initialState,
+  // extraReducers: {},
+  extraReducers: {
+    // ми викоистовумо асинк санк, тому тут екстаедюсеи, для коожного кейсу - фулфілд - коли все добе, пендінг, реджекткд робимо міні редюсери
+    [authOperations.register.fulfilled](state, action) {
+      // також ми викоистовуемо тут імме, тому можемо якоби мутіpовати наш стейт (а це цілий обьект) напряму (тобто його копію).
+      console.log(action.payload);
+      state.user = action.payload.user;
+      state.token = action.payload.token;
+      // и успішній реєстраціі ставимо із логін тру
+      state.isLoggedIn = true;
+    },
+    [authOperations.logIn.fulfilled](state, action) {
+      state.user = action.payload.user;
+      state.token = action.payload.token;
+      state.isLoggedIn = true;
+    },
+    [authOperations.logOut.fulfilled](state, action) {
+      state.user = { name: null, email: null };
+      state.token = null;
+      state.isLoggedIn = false;
+    },
+    //     [authOperations.fetchCurrentUser.fulfilled](state, action) {
+    //       state.user = action.payload;
+    //       state.isLoggedIn = true;
+    //     },
+  },
+});
+
+export default authSlice.reducer;
