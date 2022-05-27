@@ -5,9 +5,10 @@ const initialState = {
   user: { name: null, email: null },
   token: null,
   isLoggedIn: false,
+  isRegistered: false,
 };
 
-const authSlice = createSlice({
+export const authSlice = createSlice({
   name: 'auth',
   initialState,
   // extraReducers: {},
@@ -19,7 +20,8 @@ const authSlice = createSlice({
       state.user = action.payload.user;
       state.token = action.payload.token;
       // и успішній реєстраціі ставимо із логін тру
-      state.isLoggedIn = true;
+      state.isRegistered = true;
+      // state.isLoggedIn = true;
     },
     [authOperations.logIn.fulfilled](state, action) {
       state.user = action.payload.user;

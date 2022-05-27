@@ -1,11 +1,19 @@
 import { LinkElem } from './Navigation.styled.js';
+import { useSelector } from 'react-redux';
+import { authSelectors } from '../../redux/auth';
 
-const Navigation = () => (
-  // якщо не писати всередині ретурн, то використовуемо круглі скобки, бо це те що повертає стрілочна функція.
-  <nav>
-    <LinkElem to="/">Home</LinkElem>
-    <LinkElem to="/contacts">Contacts</LinkElem>
-  </nav>
-);
+function Navigation() {
+  const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
+  return (
+    // якщо не писати всередині ретурн, то використовуемо круглі скобки, бо це те що повертає стрілочна функція.
+    <nav>
+      {isLoggedIn ? (
+        <LinkElem to="/contacts">Contacts</LinkElem>
+      ) : (
+        <LinkElem to="/">Home</LinkElem>
+      )}
+    </nav>
+  );
+}
 
 export default Navigation;

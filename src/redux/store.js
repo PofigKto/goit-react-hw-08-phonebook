@@ -2,6 +2,7 @@ import { configureStore } from '@reduxjs/toolkit';
 import { setupListeners } from '@reduxjs/toolkit/query';
 import { filterSlice } from './filterSlice';
 import { contactsApi } from './itemsSlice';
+// import { authSlice } from './auth/auth-slice';
 import { authReducer } from './auth';
 import {
   persistStore,
@@ -48,6 +49,7 @@ export const store = configureStore({
       },
     }),
     contactsApi.middleware,
+    // authSlice.middleware,
   ],
 });
 export const persistor = persistStore(store);

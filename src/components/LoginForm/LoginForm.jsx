@@ -1,9 +1,11 @@
 import './LoginForm.styled.js';
 import { Form, FormLabel, FormInput, FormButton } from './LoginForm.styled';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { authOperations } from '../../redux/auth';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 // import PropTypes from 'prop-types';
+import { authSelectors } from '../../redux/auth';
 
 export default function LoginForm(props) {
   const [email, setEmail] = useState('');
@@ -12,6 +14,18 @@ export default function LoginForm(props) {
   console.log(password);
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
+  // const token = useSelector(authSelectors.getToken);
+  const location = useLocation();
+  console.log(location);
+
+  useEffect(() => {
+    console.log(location.pathname);
+    console.log(isLoggedIn);
+    isLoggedIn ? navigate('/contacts') : navigate(location.pathname);
+    // token ? navigate(location.pathname) : navigate('/');
+  }, [isLoggedIn, location.pathname, navigate]);
 
   const handleChange = event => {
     // console.log(event);
@@ -40,7 +54,14 @@ export default function LoginForm(props) {
     setEmail('');
     setPassword('');
   };
-
+  // const onClickLogIn = () => {
+  //   // перевіряємо , чи є стейт?
+  //   // якщо є, то переходимо за адресою з паснейм (звізки ми прийшли на цю сторінку)+ що було в рядку пошукуЖ
+  //   // (якщо там нічого не було, то просто повернемося на попередню сторінку, якщо в  стейті пошуку щось було - повернемося на сторінку пошуку
+  //   // якщо стейт нул - тобто ми просто відкрили карту фільма за посиланням, наприклад з гуглу, то
+  //   // переходимо на нашу початкову сторінку.
+  //   isLoggedIn ? navigate('/') : navigate(location.state.pathname);
+  // };
   return (
     <Form onSubmit={handleSubmit}>
       <FormLabel>

@@ -3,15 +3,19 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 
 // axios.defaults.baseURL = 'https://lpj-tasker.herokuapp.com';
 axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
-
-// const token = {
-//   set(token) {
-//     axios.defaults.headers.common.Authorization = `Bearer ${token}`;
-//   },
-//   unset() {
-//     axios.defaults.headers.common.Authorization = '';
-//   },
-// };
+// в аксіос є defaults.headers, це  дає нам змогу добавляти заголовок до кожного запиту
+// ми запишемо common - це значить для всіх запитів
+// чіпляємо заголовок - Authorization
+const token = {
+  // просто сетить цей токен
+  set(token) {
+    axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+  },
+  // ця функція знімає токен, тобто заголовок авторизація є, але порожня
+  unset() {
+    axios.defaults.headers.common.Authorization = '';
+  },
+};
 
 // /*
 //  * POST @ /users/signup
@@ -25,7 +29,8 @@ axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
 const register = createAsyncThunk('auth/register', async credentials => {
   try {
     const { data } = await axios.post('/users/signup', credentials);
-    // token.set(data.token);
+    // коли користувач заеєстровано - сетим токен
+    token.set(data.token);
     return data;
   } catch (error) {
     // TODO: Добавить обработку ошибки error.message
@@ -40,7 +45,7 @@ const register = createAsyncThunk('auth/register', async credentials => {
 const logIn = createAsyncThunk('auth/login', async credentials => {
   try {
     const { data } = await axios.post('/users/login', credentials);
-    // token.set(data.token);
+    token.set(data.token);
     return data;
   } catch (error) {
     //     // TODO: Добавить обработку ошибки error.message
@@ -55,7 +60,7 @@ const logIn = createAsyncThunk('auth/login', async credentials => {
 const logOut = createAsyncThunk('auth/logout', async () => {
   try {
     await axios.post('/users/logout');
-    // token.unset();
+    token.unset();
   } catch (error) {
     // TODO: Добавить обработку ошибки error.message
   }

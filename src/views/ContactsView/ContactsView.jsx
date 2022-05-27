@@ -23,10 +23,10 @@ export default function ContactsView() {
   const [newContact] = useCreateContactsMutation();
 
   // функція для додавання нового контакту
-  const addContact = ({ name, phone }) => {
+  const addContact = ({ name, number }) => {
     const contact = {
       name,
-      phone,
+      number,
     };
     // якщо контакт існуе - даемо nоnеpедження
     if (data.some(contact => contact.name === name)) {

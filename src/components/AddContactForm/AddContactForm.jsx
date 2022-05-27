@@ -10,17 +10,17 @@ import PropTypes from 'prop-types';
 
 export default function AddContactForm(props) {
   const [name, setName] = useState('');
-  const [phone, setPhone] = useState('');
+  const [number, setNumber] = useState('');
   // console.log(name);
-  // console.log(phone);
+  // console.log(number);
   const handleChange = event => {
     const { name, value } = event.currentTarget;
     switch (name) {
       case 'name':
         setName(value);
         break;
-      case 'phone':
-        setPhone(value);
+      case 'number':
+        setNumber(value);
         break;
       default:
         return;
@@ -29,14 +29,14 @@ export default function AddContactForm(props) {
 
   const handleSubmit = e => {
     e.preventDefault();
-    // console.log(name, number);
-    props.onSubmit({ name, phone });
+    console.log(name, number);
+    props.onSubmit({ name, number });
     resetForm();
   };
 
   const resetForm = () => {
     setName('');
-    setPhone('');
+    setNumber('');
   };
 
   return (
@@ -58,11 +58,11 @@ export default function AddContactForm(props) {
         Number :
         <FormInput
           type="tel"
-          name="phone"
-          value={phone}
+          name="number"
+          value={number}
           onChange={handleChange}
           pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
-          title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
+          title=" number must be digits and can contain spaces, dashes, parentheses and can start with +"
           required
         />
       </FormLabel>
