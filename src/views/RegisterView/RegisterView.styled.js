@@ -3,15 +3,11 @@ import ballons from './ballons.jpg';
 export const Container = styled.div`
   min-height: calc(100vh - 50px);
   display: flex;
-  /* flex-direction: column; */
   align-items: center;
   justify-content: center;
-
   background: linear-gradient(lightblue, lightyellow);
 `;
 export const RegisterFormContainer = styled.div`
-  /* width: 70%; */
-  /* min-height: calc(80vh - 0px); */
   padding: 30px;
   display: flex;
   align-items: center;
@@ -26,7 +22,6 @@ export const WellcomeContainer = styled.div`
   display: flex;
   align-items: center;
   margin-right: 30px;
-  /* justify-content: center; */
   border-radius: 10px;
   background-size: cover;
   background-image: url(${ballons});

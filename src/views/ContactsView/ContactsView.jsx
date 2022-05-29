@@ -5,7 +5,6 @@ import Filter from '../../components/Filter';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Container } from './ContactsView.styled';
-// import './container.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { updateFilter } from '../../redux/filterSlice';
 import {

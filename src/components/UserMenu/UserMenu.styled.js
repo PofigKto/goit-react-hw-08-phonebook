@@ -30,7 +30,7 @@ export const LogOutButton = styled.button`
   transition: all 0.2s;
   /* text-transform: uppercase; */
   /* color: #2a363b; */
-  color: blue;
+  color: darkblue;
   background-color: yellow;
   /* background-color: transparent; */
   cursor: pointer;
