@@ -64,7 +64,7 @@ export default function RegisterForm(props) {
   return (
     <Form onSubmit={handleSubmit} autoComplete="off">
       <FormLabel>
-        Name :
+        *Ім'я :{/* Name : */}
         <FormInput
           type="text"
           name="name"
@@ -73,12 +73,13 @@ export default function RegisterForm(props) {
           title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
           // title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
           required
-          placeholder="Enter your name"
+          placeholder="Введіть своє ім'я"
+          // placeholder="Enter your name"
         />
       </FormLabel>
       <br />
       <FormLabel>
-        Email :
+        *Поштова скинька :{/* Email : */}
         <FormInput
           type="email"
           name="email"
@@ -91,23 +92,25 @@ export default function RegisterForm(props) {
       </FormLabel>
       <br />
       <FormLabel>
-        Password :
+        *Секретний пароль :{/* Password : */}
         <FormInput
           type="password"
           name="password"
           value={password}
           onChange={handleChange}
-          // pattern="{ '9': '[0-9]', 'a': '[A-Za-z]', '*': '[A-Za-z0-9]' }"
+          pattern="{ '9': '[0-9]', 'a': '[A-Za-z]', '*': '[A-Za-z0-9]' }"
           // pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
           // title="Password must be digits and can contain spaces, dashes, parentheses and can start with +"
           required
           // autocomplete
           maxlength="14"
           minlength="6"
-          placeholder="Password must be min 6 and max 14 symbols"
+          // placeholder="Password must be min 6 and max 14 symbols"
+          placeholder="Пароль має містити не меньше 6 та не більше 14 символів"
         />
       </FormLabel>
-      <FormButton type="submit">Sign up</FormButton>
+      <FormButton type="submit">Зареєструватися</FormButton>
+      {/* <FormButton type="submit">Sign up</FormButton> */}
     </Form>
   );
 }

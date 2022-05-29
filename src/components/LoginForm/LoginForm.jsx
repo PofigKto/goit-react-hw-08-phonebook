@@ -54,32 +54,25 @@ export default function LoginForm(props) {
     setEmail('');
     setPassword('');
   };
-  // const onClickLogIn = () => {
-  //   // перевіряємо , чи є стейт?
-  //   // якщо є, то переходимо за адресою з паснейм (звізки ми прийшли на цю сторінку)+ що було в рядку пошукуЖ
-  //   // (якщо там нічого не було, то просто повернемося на попередню сторінку, якщо в  стейті пошуку щось було - повернемося на сторінку пошуку
-  //   // якщо стейт нул - тобто ми просто відкрили карту фільма за посиланням, наприклад з гуглу, то
-  //   // переходимо на нашу початкову сторінку.
-  //   isLoggedIn ? navigate('/') : navigate(location.state.pathname);
-  // };
+
   return (
     <Form onSubmit={handleSubmit}>
       <FormLabel>
-        Email :
+        Поштова скинька :{/* Email : */}
         <FormInput
           type="email"
           name="email"
           value={email}
           onChange={handleChange}
           // title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-          // title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
           required
-          placeholder="Enter your email"
+          placeholder="Введіть своє ім'я"
+          // placeholder="Enter your email"
         />
       </FormLabel>
       <br />
       <FormLabel>
-        Password :
+        Секретний пароль :{/* Password : */}
         <FormInput
           type="password"
           name="password"
@@ -92,10 +85,11 @@ export default function LoginForm(props) {
           // autocomplete
           maxlength="14"
           minlength="6"
-          placeholder="Password must be min 6 and max 14 symbols"
+          // placeholder="Password must be min 6 and max 14 symbols"
+          placeholder="Пароль має містити не меньше 6 та не більше 14 символів"
         />
       </FormLabel>
-      <FormButton type="submit">Log in</FormButton>
+      <FormButton type="submit">Заходьте, будь-ласка!</FormButton>
     </Form>
   );
 }

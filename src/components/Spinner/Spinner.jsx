@@ -40,7 +40,8 @@ export default function Spinner() {
           <ImSpinner3 size="40" />
           {/* <GiSpinalCoil size="40" /> */}
         </SpinnerEl>
-        Loading...
+        Почекайте хвилинку, завантажується...
+        {/* Loading... */}
       </SpinnerContainer>
     </div>
   );

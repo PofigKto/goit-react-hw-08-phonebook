@@ -7,8 +7,8 @@ function Navigation() {
   return (
     // якщо не писати всередині ретурн, то використовуемо круглі скобки, бо це те що повертає стрілочна функція.
     <nav>
-      <LinkElem to="/">Home</LinkElem>
-      {isLoggedIn && <LinkElem to="/contacts">Contacts</LinkElem>}
+      <LinkElem to="/">Домашня </LinkElem>
+      {isLoggedIn && <LinkElem to="/contacts">КотоКонтакти</LinkElem>}
       {/* {isLoggedIn ? (
         <LinkElem to="/contacts">Contacts</LinkElem>
       ) : (

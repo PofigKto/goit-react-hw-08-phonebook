@@ -35,6 +35,9 @@ const register = createAsyncThunk('auth/register', async credentials => {
     return data;
   } catch (error) {
     console.log(error.message);
+    toast.info(
+      'Упс, щось пішло не так...Перевірте, чи вірно ви вказали скриньку та створіть надійний пароль  - він має містити не меньше 6 та не більше 14 символів '
+    );
     // Добавить обработку ошибки error.message
   }
 });

@@ -42,7 +42,7 @@ export default function AddContactForm(props) {
   return (
     <Form onSubmit={handleSubmit}>
       <FormLabel>
-        Name :
+        Ім'я котика:
         <FormInput
           type="text"
           name="name"
@@ -55,7 +55,7 @@ export default function AddContactForm(props) {
       </FormLabel>
       <br />
       <FormLabel>
-        Number :
+        Номер для зв'язку:
         <FormInput
           type="tel"
           name="number"
@@ -66,7 +66,8 @@ export default function AddContactForm(props) {
           required
         />
       </FormLabel>
-      <FormButton type="submit">Add contact</FormButton>
+      {/* <FormButton type="submit">Add contact</FormButton> */}
+      <FormButton type="submit">Додати котика</FormButton>
     </Form>
   );
 }

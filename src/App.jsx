@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { Routes, Route } from 'react-router-dom';
 import AppBar from './components/Appbar';
 import Container from './components/Container';
-import { ToastContainer } from 'react-toastify';
+// import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Spinner from './components/Spinner/Spinner';
 import { authOperations } from 'redux/auth';
@@ -24,11 +24,11 @@ export default function App() {
   return (
     <Container>
       <AppBar />
-      <ToastContainer
+      {/* <ToastContainer
         position={'top-center'}
         autoClose={3000}
         theme={'colored'}
-      />
+      /> */}
       <Suspense fallback={<Spinner />}>
         <Routes>
           <Route

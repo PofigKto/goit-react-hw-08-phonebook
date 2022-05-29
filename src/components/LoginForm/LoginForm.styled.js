@@ -23,10 +23,15 @@ export const FormLabel = styled.label`
 export const FormInput = styled.input`
   width: 70%;
   margin-left: 20px;
-  height: 28px;
+  height: 44px;
   font-size: 14px;
   color: blue;
   border: 2px solid rgb(234, 255, 47);
+  cursor: pointer;
+  :focus-visible {
+    border: 2px solid #30ebfc;
+    outline: none;
+  }
 `;
 
 export const FormButton = styled.button`

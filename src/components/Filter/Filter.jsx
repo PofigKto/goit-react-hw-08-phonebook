@@ -6,7 +6,8 @@ import PropTypes from 'prop-types';
 const Filter = ({ value, onChange }) => {
   return (
     <FilterLabel>
-      Find contacts by name :
+      Знайти котика за ім'ям:
+      {/* Find contacts by name : */}
       <FilterInput type="text" value={value} onChange={onChange} />
     </FilterLabel>
   );

@@ -16,11 +16,12 @@ const ContactList = ({ contacts, onDeleteContact }) => (
     {contacts.map(({ name, number, id }) => (
       <ContactListItem key={id}>
         <Contact>
-          <ContactListName> {name} : </ContactListName>
+          <ContactListName> Котик {name} : </ContactListName>
           <ContactListNumber> {number} </ContactListNumber>
         </Contact>
         <ContactListButton type="button" onClick={() => onDeleteContact(id)}>
-          Delete
+          Видалити
+          {/* Delete */}
         </ContactListButton>
       </ContactListItem>
     ))}

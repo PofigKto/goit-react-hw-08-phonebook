@@ -5,8 +5,8 @@ import { AuthNavLink } from './AuthNav.styled';
 export default function AuthNav() {
   return (
     <div>
-      <AuthNavLink to="/register">Register </AuthNavLink>
-      <AuthNavLink to="/login">Log in</AuthNavLink>
+      <AuthNavLink to="/register">Зареєструватися</AuthNavLink>
+      <AuthNavLink to="/login">Увійти тут</AuthNavLink>
     </div>
   );
 }
