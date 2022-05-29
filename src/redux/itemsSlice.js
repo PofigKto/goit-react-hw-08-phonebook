@@ -20,6 +20,7 @@ export const contactsApi = createApi({
     },
   }),
   tagTypes: ['Contact'],
+  keepUnusedDataFor: 10,
   endpoints: builder => ({
     // фетч - щоб забиpать на бекенді все що е
     fetchContacts: builder.query({

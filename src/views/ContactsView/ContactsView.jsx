@@ -4,7 +4,8 @@ import Spinner from '../../components/Spinner';
 import Filter from '../../components/Filter';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { Container } from './ContactsView.styled';
+import cats from './cats.jpg';
+import { Container, PhonebookContainer } from './ContactsView.styled';
 import { useDispatch, useSelector } from 'react-redux';
 import { updateFilter } from '../../redux/filterSlice';
 import {
@@ -51,24 +52,34 @@ export default function ContactsView() {
 
   return (
     <Container>
-      <h1>Phonebook</h1>
-      <AddContactForm onSubmit={addContact} />
-      <ToastContainer
-        position={'top-center'}
-        autoClose={3000}
-        theme={'colored'}
+      <img
+        src={cats}
+        alt="cats"
+        // width="444"
+        // height="423"
+        width="50%"
+        height="50%"
       />
-      <h2> Contacts : </h2>
-      <Filter value={value} onChange={changeFilter} />
-      {/* nід час виконання заnиту кpутиться сnінеp */}
-      {isFetching && <Spinner />}
-      {/*коли npийшли вже дані з бекенду, то pендеимо сnисок контактів */}
-      {data && (
-        <ContactList
-          contacts={getVisibleContacts()}
-          onDeleteContact={deleteItem}
+      <PhonebookContainer>
+        <h1>Phonebook</h1>
+        <AddContactForm onSubmit={addContact} />
+        <ToastContainer
+          position={'top-center'}
+          autoClose={3000}
+          theme={'colored'}
         />
-      )}
+        <h2> Contacts : </h2>
+        <Filter value={value} onChange={changeFilter} />
+        {/* nід час виконання заnиту кpутиться сnінеp */}
+        {isFetching && <Spinner />}
+        {/*коли npийшли вже дані з бекенду, то pендеимо сnисок контактів */}
+        {data && (
+          <ContactList
+            contacts={getVisibleContacts()}
+            onDeleteContact={deleteItem}
+          />
+        )}
+      </PhonebookContainer>
     </Container>
   );
 }

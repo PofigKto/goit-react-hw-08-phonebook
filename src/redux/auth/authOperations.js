@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import { toast } from 'react-toastify';
 
 // axios.defaults.baseURL = 'https://lpj-tasker.herokuapp.com';
 axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
@@ -33,6 +34,7 @@ const register = createAsyncThunk('auth/register', async credentials => {
     token.set(data.token);
     return data;
   } catch (error) {
+    console.log(error.message);
     // Добавить обработку ошибки error.message
   }
 });
@@ -46,9 +48,17 @@ const logIn = createAsyncThunk('auth/login', async credentials => {
   try {
     const { data } = await axios.post('/users/login', credentials);
     token.set(data.token);
+    console.log(data);
     return data;
   } catch (error) {
-    //     //  Добавить обработку ошибки error.message
+    //  Добавить обработку ошибки error.message
+    // alert(error.message);
+    // alert(
+    //   'Соррі, такого користувача у нас немає, перевірте, чи вірно ви ввели логін і пароль'
+    // );
+    toast.info(
+      'Соррі, такого користувача у нас немає, перевірте, чи вірно ви ввели логін і пароль'
+    );
   }
 });
 
@@ -62,6 +72,7 @@ const logOut = createAsyncThunk('auth/logout', async () => {
     await axios.post('/users/logout');
     token.unset();
   } catch (error) {
+    console.log(error.message);
     //  Добавить обработку ошибки error.message
   }
 });
@@ -103,6 +114,7 @@ const fetchCurrentUser = createAsyncThunk(
       // console.log({ data });
       return data;
     } catch (error) {
+      console.log(error.message);
       //   Добавить обработку ошибки error.message
     }
   }
