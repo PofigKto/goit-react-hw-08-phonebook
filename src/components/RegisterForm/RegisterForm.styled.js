@@ -41,6 +41,20 @@ export const FormButton = styled.button`
   color: rgb(19, 61, 248);
   background-color: rgb(234, 255, 47);
   border: 3px solid yellow;
+  /* box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); */
+  box-shadow: 5px 5px 10px 1px #30ebfc;
   box-shadow: 5px 5px 20px 5px #30ebfc;
+  /* box-shadow: 5px 5px 20px 5px #30ebfc; */
   border-radius: 10px;
+  &:hover {
+    transform: translateY(-3px);
+
+    /* box-shadow: 5px 5px 10px 1px #30ebfc; */
+    /* box-shadow: 5px 5px 20px 5px #30ebfc; */
+    /* width: 115px;
+    height: 44px; */
+    /* background: #fff; */
+    /* border: 1px solid #ff6b01; */
+    color: #30ebfc;
+  }
 `;

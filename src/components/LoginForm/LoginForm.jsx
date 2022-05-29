@@ -1,11 +1,11 @@
 import './LoginForm.styled.js';
 import { Form, FormLabel, FormInput, FormButton } from './LoginForm.styled';
-import { useState, useEffect } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useState } from 'react';
+// import { useNavigate, useLocation } from 'react-router-dom';
 import { authOperations } from '../../redux/auth';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 // import PropTypes from 'prop-types';
-import { authSelectors } from '../../redux/auth';
+// import { authSelectors } from '../../redux/auth';
 
 export default function LoginForm(props) {
   const [email, setEmail] = useState('');
@@ -14,18 +14,18 @@ export default function LoginForm(props) {
   console.log(password);
 
   const dispatch = useDispatch();
-  const navigate = useNavigate();
-  const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
+  // const navigate = useNavigate();
+  // const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
   // const token = useSelector(authSelectors.getToken);
-  const location = useLocation();
-  console.log(location);
+  // const location = useLocation();
+  // console.log(location);
 
-  useEffect(() => {
-    console.log(location.pathname);
-    console.log(isLoggedIn);
-    isLoggedIn ? navigate('/contacts') : navigate(location.pathname);
-    // token ? navigate(location.pathname) : navigate('/');
-  }, [isLoggedIn, location.pathname, navigate]);
+  // useEffect(() => {
+  //   console.log(location.pathname);
+  //   console.log(isLoggedIn);
+  //   isLoggedIn ? navigate('/contacts') : navigate(location.pathname);
+  //   // token ? navigate(location.pathname) : navigate('/');
+  // }, [isLoggedIn, location.pathname, navigate]);
 
   const handleChange = event => {
     // console.log(event);

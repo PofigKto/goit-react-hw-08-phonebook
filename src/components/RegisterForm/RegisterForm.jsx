@@ -1,10 +1,10 @@
 import './RegisterForm.styled';
 import { Form, FormLabel, FormInput, FormButton } from './RegisterForm.styled';
-import { useState, useEffect } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useState } from 'react';
+// import { useNavigate, useLocation } from 'react-router-dom';
 import { authOperations } from '../../redux/auth';
-import { useDispatch, useSelector } from 'react-redux';
-import { authSelectors } from '../../redux/auth';
+import { useDispatch } from 'react-redux';
+// import { authSelectors } from '../../redux/auth';
 // import PropTypes from 'prop-types';
 
 export default function RegisterForm(props) {
@@ -16,16 +16,16 @@ export default function RegisterForm(props) {
   console.log(password);
 
   const dispatch = useDispatch();
-  const navigate = useNavigate();
-  const isRegistered = useSelector(authSelectors.getIsRegistered);
+  // const navigate = useNavigate();
+  // const isRegistered = useSelector(authSelectors.getIsRegistered);
   // const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
-  const location = useLocation();
-  console.log(location);
-  useEffect(() => {
-    console.log(location.pathname);
-    console.log(isRegistered);
-    isRegistered ? navigate('/login') : navigate(location.pathname);
-  }, [isRegistered, location.pathname, navigate]);
+  // const location = useLocation();
+  // console.log(location);
+  // useEffect(() => {
+  //   console.log(location.pathname);
+  //   console.log(isRegistered);
+  //   isRegistered ? navigate('/login') : navigate(location.pathname);
+  // }, [isRegistered, location.pathname, navigate]);
   // isLoggedIn ? navigate('/contacts') : navigate(location.pathname);
   // }, [isLoggedIn, location.pathname, navigate]);
 

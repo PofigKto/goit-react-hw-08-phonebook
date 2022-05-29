@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  width: 630px;
+  /* width: 640px; */
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -9,5 +9,5 @@ export const Container = styled.div`
   text-transform: uppercase;
   color: blue;
   background: linear-gradient(lightblue, lightyellow);
-  padding: 15px;
+  padding: 30px;
 `;

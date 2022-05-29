@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { PersistGate } from 'redux-persist/integration/react';
 
 import { BrowserRouter } from 'react-router-dom';
-import { App } from './components/App';
+import App from './App';
 import { store, persistor } from './redux/store';
 import { Provider } from 'react-redux';
 import 'modern-normalize/modern-normalize.css';

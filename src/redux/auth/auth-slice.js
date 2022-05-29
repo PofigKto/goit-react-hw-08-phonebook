@@ -21,7 +21,7 @@ export const authSlice = createSlice({
       state.token = action.payload.token;
       // и успішній реєстраціі ставимо із логін тру
       state.isRegistered = true;
-      // state.isLoggedIn = true;
+      state.isLoggedIn = true;
     },
     [authOperations.logIn.fulfilled](state, action) {
       state.user = action.payload.user;
@@ -33,10 +33,11 @@ export const authSlice = createSlice({
       state.token = null;
       state.isLoggedIn = false;
     },
-    //     [authOperations.fetchCurrentUser.fulfilled](state, action) {
-    //       state.user = action.payload;
-    //       state.isLoggedIn = true;
-    //     },
+    [authOperations.fetchCurrentUser.fulfilled](state, action) {
+      //  action.payload - це наш обект юзера
+      state.user = action.payload;
+      state.isLoggedIn = true;
+    },
   },
 });
 

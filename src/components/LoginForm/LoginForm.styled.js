@@ -43,4 +43,9 @@ export const FormButton = styled.button`
   border: 3px solid yellow;
   box-shadow: 5px 5px 20px 5px #30ebfc;
   border-radius: 10px;
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 5px 5px 10px 1px #30ebfc;
+    color: #30ebfc;
+  }
 `;

@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const FilterLabel = styled.label`
+  width: 600px;
   font-size: 22px;
   text-transform: capitalize;
   display: flex;
@@ -12,7 +13,7 @@ export const FilterLabel = styled.label`
 `;
 
 export const FilterInput = styled.input`
-  height: 28px;
+  height: 44px;
   font-size: 14px;
   color: blue;
   border: 2px solid rgb(234, 255, 47);
