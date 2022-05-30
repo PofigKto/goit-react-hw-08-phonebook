@@ -4,10 +4,14 @@ import Spinner from '../../components/Spinner';
 import Filter from '../../components/Filter';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+
 import cats from './cats.jpg';
 import { Container, PhonebookContainer } from './ContactsView.styled';
+// import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+
 import { updateFilter } from '../../redux/filterSlice';
+// import { authOperations } from 'redux/auth';
 import {
   useFetchContactsQuery,
   useDeleteContactsMutation,
@@ -16,12 +20,22 @@ import {
 
 export default function ContactsView() {
   const value = useSelector(state => state.filter);
+  // const isLoggedIn = useSelector(state => state.isLoggedIn);
   const dispatch = useDispatch();
+
   // хуки з ітемс-слайсу
   const { data, isFetching } = useFetchContactsQuery();
+  console.log(useFetchContactsQuery());
   const [deleteItem] = useDeleteContactsMutation();
   const [newContact] = useCreateContactsMutation();
-
+  // useEffect(() => {
+  //   if (error) {
+  //     console.log(error);
+  //     toast.info(
+  //       'Час вашої авторизації вийшов. Перейдіть на домашню сторінку.'
+  //     );
+  //   }
+  // }, [error]);
   // функція для додавання нового контакту
   const addContact = ({ name, number }) => {
     const contact = {
@@ -30,7 +44,8 @@ export default function ContactsView() {
     };
     // якщо контакт існуе - даемо nоnеpедження
     if (data.some(contact => contact.name === name)) {
-      return toast.info(`${contact.name}   is   already in contacts`);
+      // return toast.info(`${contact.name}   is   already in contacts`);
+      return toast.info(`${contact.name} вже такий контакт існує`);
     }
     // якщо контакт новий - добавляeмо його до сnиску контактів,
     //  викоpистовумо хук зі слайсу для відобpаження нового ствоpеного контакту
@@ -50,6 +65,11 @@ export default function ContactsView() {
     );
   };
 
+  // return
+  // error ? (
+  // <>there was an error</>
+  // ) : (
+  // toast.info('Упс, щось пішло не так...Спробуйте ще раз')
   return (
     <Container>
       <img

@@ -1,4 +1,5 @@
 import { lazy, Suspense, useEffect } from 'react';
+// import { useDispatch, useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { Routes, Route } from 'react-router-dom';
 import AppBar from './components/Appbar';
@@ -7,6 +8,7 @@ import Container from './components/Container';
 import 'react-toastify/dist/ReactToastify.css';
 import Spinner from './components/Spinner/Spinner';
 import { authOperations } from 'redux/auth';
+// import { authSelectors } from 'redux/auth';
 import PrivateRoute from 'components/PrivateRoute';
 import PublicRoute from 'components/PublicRoute';
 
@@ -18,6 +20,9 @@ const RegisterView = lazy(() => import('./views/RegisterView'));
 
 export default function App() {
   const dispatch = useDispatch();
+  // const error = useSelector(authSelectors.getError);
+  // console.log(error);
+
   useEffect(() => {
     dispatch(authOperations.fetchCurrentUser());
   }, [dispatch]);

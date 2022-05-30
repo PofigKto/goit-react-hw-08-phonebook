@@ -20,8 +20,11 @@ import { authSelectors } from '../redux/auth';
 export default function PrivateRoute({ children }) {
   // візьмемо для отримання стейта ізЛогін
   const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
+  // const error = useSelector(authSelectors.getError);
   console.log(isLoggedIn);
+  // console.log(error);
   return isLoggedIn ? children : <Navigate to="/" />;
+  // return isLoggedIn && children;
 }
 
 // export default function PrivateRoute({

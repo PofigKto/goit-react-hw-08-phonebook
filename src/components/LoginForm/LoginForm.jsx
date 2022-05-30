@@ -58,7 +58,7 @@ export default function LoginForm(props) {
   return (
     <Form onSubmit={handleSubmit}>
       <FormLabel>
-        Поштова скинька :{/* Email : */}
+        Поштова скринька :{/* Email : */}
         <FormInput
           type="email"
           name="email"

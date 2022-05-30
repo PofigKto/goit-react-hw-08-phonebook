@@ -6,6 +6,8 @@ const initialState = {
   token: null,
   isLoggedIn: false,
   isRegistered: false,
+  isFetchingCurrentUser: false,
+  error: null,
 };
 
 export const authSlice = createSlice({
@@ -24,6 +26,9 @@ export const authSlice = createSlice({
       state.isLoggedIn = true;
     },
     [authOperations.logIn.fulfilled](state, action) {
+      if (!action.payload) {
+        return;
+      }
       state.user = action.payload.user;
       state.token = action.payload.token;
       state.isLoggedIn = true;
@@ -33,10 +38,18 @@ export const authSlice = createSlice({
       state.token = null;
       state.isLoggedIn = false;
     },
+    [authOperations.fetchCurrentUser.pending](state, action) {
+      state.isFetchingCurrentUser = true;
+    },
     [authOperations.fetchCurrentUser.fulfilled](state, action) {
       //  action.payload - це наш обект юзера
       state.user = action.payload;
       state.isLoggedIn = true;
+      state.isFetchingCurrentUser = false;
+    },
+    [authOperations.fetchCurrentUser.rejected](state, action) {
+      state.isFetchingCurrentUser = false;
+      state.error = action.payload;
     },
   },
 });

@@ -4,6 +4,21 @@ import { toast } from 'react-toastify';
 
 // axios.defaults.baseURL = 'https://lpj-tasker.herokuapp.com';
 axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
+// const errorComposer = error => {
+//   return () => {
+//     const statusCode = error.response ? error.response.status : null;
+//     if (statusCode === 404) {
+//       toast.error('The requested resource does not exist or has been deleted');
+//     }
+//     if (statusCode === 401) {
+//       toast.error('Please login to access this resource');
+//     }
+//   };
+// };
+// axios.interceptors.response.use(undefined, function (error) {
+//   error.handleGlobally = errorComposer(error);
+// return Promise.reject(error);
+// });
 // в аксіос є defaults.headers, це  дає нам змогу добавляти заголовок до кожного запиту
 // ми запишемо common - це значить для всіх запитів
 // чіпляємо заголовок - Authorization
@@ -27,27 +42,31 @@ const token = {
 // credentials - це обект, який доходить сюди під час сабміта форми при дисспатчі
 // з нейм, емейл і паролем
 //
-const register = createAsyncThunk('auth/register', async credentials => {
-  try {
-    const { data } = await axios.post('/users/signup', credentials);
-    // коли користувач заеєстровано - сетим токен
-    token.set(data.token);
-    return data;
-  } catch (error) {
-    console.log(error.message);
-    toast.info(
-      'Упс, щось пішло не так...Перевірте, чи вірно ви вказали скриньку та створіть надійний пароль  - він має містити не меньше 6 та не більше 14 символів '
-    );
-    // Добавить обработку ошибки error.message
+const register = createAsyncThunk(
+  'auth/register',
+  async (credentials, thunkAPI) => {
+    try {
+      const { data } = await axios.post('/users/signup', credentials);
+      // коли користувач заеєстровано - сетим токен
+      token.set(data.token);
+      return data;
+    } catch (error) {
+      console.log(error.message);
+      toast.info(
+        'Упс, щось пішло не так...Перевірте, чи вірно ви вказали скриньку та створіть надійний пароль  - він має містити не меньше 6 та не більше 14 символів '
+      );
+      return thunkAPI.rejectWithValue();
+      // Добавить обработку ошибки error.message
+    }
   }
-});
+);
 
 // /*
 //  * POST @ /users/login
 //  * body: { email, password }
 //  * После успешного логина добавляем токен в HTTP-заголовок
 //  */
-const logIn = createAsyncThunk('auth/login', async credentials => {
+const logIn = createAsyncThunk('auth/login', async (credentials, thunkAPI) => {
   try {
     const { data } = await axios.post('/users/login', credentials);
     token.set(data.token);
@@ -62,6 +81,11 @@ const logIn = createAsyncThunk('auth/login', async credentials => {
     toast.info(
       'Соррі, такого користувача у нас немає, перевірте, чи вірно ви ввели логін і пароль'
     );
+    return thunkAPI.rejectWithValue();
+    // return {
+    //   user: null,
+    //   token: null,
+    // };
   }
 });
 
@@ -70,12 +94,13 @@ const logIn = createAsyncThunk('auth/login', async credentials => {
 //  * headers: Authorization: Bearer token
 //  * После успешного логаута, удаляем токен из HTTP-заголовка
 //  */
-const logOut = createAsyncThunk('auth/logout', async () => {
+const logOut = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
   try {
     await axios.post('/users/logout');
     token.unset();
   } catch (error) {
     console.log(error.message);
+    return thunkAPI.rejectWithValue();
     //  Добавить обработку ошибки error.message
   }
 });
@@ -118,6 +143,8 @@ const fetchCurrentUser = createAsyncThunk(
       return data;
     } catch (error) {
       console.log(error.message);
+      toast.info('Упс, щось пішло не так...Спробуйте ще раз');
+      return thunkAPI.rejectWithValue(error);
       //   Добавить обработку ошибки error.message
     }
   }
