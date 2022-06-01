@@ -51,7 +51,7 @@ export default function App() {
             <Route
               path="contacts"
               element={
-                <PrivateRoute>
+                <PrivateRoute NavigateTo="/contacts">
                   <ContactsView />
                 </PrivateRoute>
               }

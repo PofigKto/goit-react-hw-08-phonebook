@@ -1,7 +1,12 @@
 import styled from 'styled-components';
 export const List = styled.ul`
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+  align-items: stretch;
   /* width: 600px; */
-  width: 100%;
+  /* width: 100%; */
   font-size: 20px;
   padding: 10px;
   margin-bottom: 15px;
@@ -9,13 +14,14 @@ export const List = styled.ul`
 `;
 export const ContactListItem = styled.li`
   display: flex;
+  padding: 10px;
   /* align-items: baseline; */
   align-items: center;
   justify-content: space-between;
 `;
 
 export const Contact = styled.p`
-  width: 70%;
+  /* width: 70%; */
   display: flex;
   justify-content: space-between;
   margin-right: 30px;

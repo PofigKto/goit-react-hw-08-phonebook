@@ -13,6 +13,7 @@ import {
   PhonebookContainer,
   Title,
   Phonebook,
+  // ImgContainer,
 } from './ContactsView.styled';
 import { useState } from 'react';
 // import { useEffect } from 'react';
@@ -29,24 +30,10 @@ import {
 
 export default function ContactsView() {
   const value = useSelector(state => state.filter);
-
   const dispatch = useDispatch();
-
   // const error = useSelector(authSelectors.getError);
-
   // хуки з ітемс-слайсу
   const { data, isFetching } = useFetchContactsQuery();
-
-  // console.log(data);
-  // const getId = data => {
-  //   data.map(contact => contact.id);
-  // };
-  // console.log(getId);
-  //   // якщо контакт новий - добавляeмо його до сnиску контактів,
-  //   //  викоpистовумо хук зі слайсу для відобpаження нового ствоpеного контакту
-  //   newContact(contact);
-  // };
-
   console.log(useFetchContactsQuery());
   const [deleteContact] = useDeleteContactsMutation();
   const [newContact] = useCreateContactsMutation();
@@ -97,17 +84,16 @@ export default function ContactsView() {
 
   return (
     <Container>
+      {/* <ImgContainer> */}
       <img
         src={cats}
         alt="cats"
-        // width="444"
-        // height="423"
-        width="50%"
-        height="50%"
+        //  width="444"
+        //  height="423"
+        width="40%"
+        height="40%"
       />
-      {/* {isError ? (
-        <Navigate to="/" />
-      ) : ( */}
+      {/* </ImgContainer> */}
       <PhonebookContainer>
         <Phonebook>Phonebook</Phonebook>
         <AddContactForm onSubmit={addContact} />

@@ -23,7 +23,7 @@ export default function PrivateRoute({ children }) {
   // const error = useSelector(authSelectors.getError);
   console.log(isLoggedIn);
   // console.log(error);
-  return isLoggedIn ? children : <Navigate to="/" />;
+  return isLoggedIn ? children : <Navigate to={'/login'} />;
   // return isLoggedIn && children;
 }
 

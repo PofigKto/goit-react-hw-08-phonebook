@@ -1,7 +1,9 @@
 import styled from 'styled-components';
+// import cats from './cats.jpg';
 
 export const Container = styled.div`
   width: 100%;
+  /* width: auto; */
   /* width: 640px; */
   height: 100%;
   display: flex;
@@ -10,7 +12,7 @@ export const Container = styled.div`
   padding: 60px;
 `;
 export const PhonebookContainer = styled.div`
-  width: 100%;
+  width: 70%;
   /* width: 640px; */
   height: 100%;
   display: flex;
@@ -50,3 +52,13 @@ export const Title = styled.h2`
   color: blue;
   margin-bottom: 10px;
 `;
+// export const ImgContainer = styled.div`
+//   min-width: 30%;
+//   min-height: 30%;
+//   margin-right: 20px;
+//   border-radius: 10px;
+//   background-size: contain;
+//   background-repeat: no-repeat;
+//   background-image: url(${cats});
+//   box-shadow: 5px 5px 20px 0px #30ebfc;
+// `;

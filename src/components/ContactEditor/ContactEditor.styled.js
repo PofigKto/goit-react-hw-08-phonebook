@@ -13,7 +13,8 @@ export const Title = styled.h2`
 export const Form = styled.form`
   display: flex;
   flex-direction: column;
-  width: 800px;
+  /* width: fit-content; */
+  width: 600px;
   height: fit-content;
   border: 4px solid blue;
   padding: 15px;

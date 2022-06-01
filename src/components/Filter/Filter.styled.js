@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 
 export const FilterLabel = styled.label`
-  width: 600px;
+  min-width: 600px;
   font-size: 22px;
-  text-transform: capitalize;
+  text-transform: initial;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -13,6 +13,7 @@ export const FilterLabel = styled.label`
 `;
 
 export const FilterInput = styled.input`
+  width: 50%;
   height: 44px;
   font-size: 14px;
   color: blue;
