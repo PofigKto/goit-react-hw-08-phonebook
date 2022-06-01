@@ -9,7 +9,7 @@ export default function UserMenu() {
   const dispatch = useDispatch();
   const name = useSelector(authSelectors.getUsername);
   // const navigate = useNavigate();
-  // const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
+  const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
   // const location = useLocation();
   // console.log(location);
   const avatar = defaultAvatar;
@@ -22,6 +22,9 @@ export default function UserMenu() {
   // }, [isLoggedIn, location.pathname, navigate]);
 
   const handleButton = () => {
+    dispatch(authOperations.fetchCurrentUser());
+    console.log(authOperations.fetchCurrentUser());
+    console.log(isLoggedIn);
     // e.preventDefault();
     //при наттисканні на кнопку ми диспатчим цю операцію - визивамо функцію authOperations.register
     dispatch(authOperations.logOut());

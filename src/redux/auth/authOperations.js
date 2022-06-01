@@ -99,7 +99,8 @@ const logOut = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
     await axios.post('/users/logout');
     token.unset();
   } catch (error) {
-    console.log(error.message);
+    console.log(error);
+
     return thunkAPI.rejectWithValue();
     //  Добавить обработку ошибки error.message
   }
@@ -139,11 +140,15 @@ const fetchCurrentUser = createAsyncThunk(
       // const response = await axios.get('/users/current');
       // console.log(response);
       const { data } = await axios.get('/users/current');
-      // console.log({ data });
+      console.log({ data });
       return data;
     } catch (error) {
-      console.log(error.message);
-      toast.info('Упс, щось пішло не так...Спробуйте ще раз');
+      console.log(error.response.status);
+      error.response.status === 401
+        ? toast.info(
+            'Соррі,виникла помилка, спробуйте перезаважтажити сторінку'
+          )
+        : toast.info('Упс, щось пішло не так...Спробуйте ще раз');
       return thunkAPI.rejectWithValue(error);
       //   Добавить обработку ошибки error.message
     }

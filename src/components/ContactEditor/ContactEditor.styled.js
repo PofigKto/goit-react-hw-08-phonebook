@@ -1,49 +1,49 @@
 import styled from 'styled-components';
-export const List = styled.ul`
-  /* width: 600px; */
-  width: 100%;
-  font-size: 20px;
-  padding: 10px;
-  margin-bottom: 15px;
-  margin-top: 0;
-`;
-export const ContactListItem = styled.li`
+
+export const Title = styled.h2`
   display: flex;
-  /* align-items: baseline; */
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
+  text-transform: none;
+  font-size: 24px;
+  font-weight: 700;
+  color: blue;
+  margin-bottom: 10px;
+`;
+export const Form = styled.form`
+  display: flex;
+  flex-direction: column;
+  width: 800px;
+  height: fit-content;
+  border: 4px solid blue;
+  padding: 15px;
+  /* text-transform: capitalize; */
 `;
 
-export const Contact = styled.p`
-  width: 70%;
+export const FormLabel = styled.label`
+  font-size: 22px;
   display: flex;
   justify-content: space-between;
-  margin-right: 30px;
-`;
-
-export const ContactListName = styled.span`
-  color: darkblue;
-  display: flex;
-`;
-
-export const ContactListNumber = styled.span`
-  color: darkcyan;
-  display: flex;
-`;
-
-export const ContactListButton = styled.button`
-  /* display: flex;
-  align-items: center;
   font-weight: bold;
-  font-size: 18px;
-  width: max-content;
-  /* height: 44px; */
-  /* padding: 5px; */
-  margin-left: 10px;
+  color: blue;
+`;
+
+export const FormInput = styled.input`
+  width: 70%;
+  margin-left: 20px;
+  height: 44px;
+  font-size: 22px;
+  color: blue;
+  border: 2px solid rgb(234, 255, 47);
+`;
+
+export const FormButton = styled.button`
+  padding: 5px;
   height: 44px;
   box-shadow: 5px 5px 10px 1px #30ebfc;
   border-radius: 10px;
   border: none;
+  margin-top: 21px;
   font-style: normal;
   font-weight: 500;
   font-size: 22px;
@@ -51,7 +51,6 @@ export const ContactListButton = styled.button`
   transition: all 0.2s;
   color: blue;
   background-color: yellow;
-  /* background-color: transparent; */
   cursor: pointer;
   &:hover {
     transform: translateY(-3px);

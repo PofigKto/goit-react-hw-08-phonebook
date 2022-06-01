@@ -4,38 +4,56 @@ import Spinner from '../../components/Spinner';
 import Filter from '../../components/Filter';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
+// import { authOperations } from 'redux/auth';
+// import { Navigate } from 'react-router-dom';
 import cats from './cats.jpg';
-import { Container, PhonebookContainer } from './ContactsView.styled';
+import Modal from '../../components/Modal';
+import {
+  Container,
+  PhonebookContainer,
+  Title,
+  Phonebook,
+} from './ContactsView.styled';
+import { useState } from 'react';
 // import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-
+// import { authSelectors } from 'redux/auth';
 import { updateFilter } from '../../redux/filterSlice';
-// import { authOperations } from 'redux/auth';
+import ContactEditor from '../../components/ContactEditor';
 import {
   useFetchContactsQuery,
   useDeleteContactsMutation,
   useCreateContactsMutation,
+  // useUpdateContactsMutation,
 } from 'redux/itemsSlice';
 
 export default function ContactsView() {
   const value = useSelector(state => state.filter);
-  // const isLoggedIn = useSelector(state => state.isLoggedIn);
+
   const dispatch = useDispatch();
+
+  // const error = useSelector(authSelectors.getError);
 
   // хуки з ітемс-слайсу
   const { data, isFetching } = useFetchContactsQuery();
+
+  // console.log(data);
+  // const getId = data => {
+  //   data.map(contact => contact.id);
+  // };
+  // console.log(getId);
+  //   // якщо контакт новий - добавляeмо його до сnиску контактів,
+  //   //  викоpистовумо хук зі слайсу для відобpаження нового ствоpеного контакту
+  //   newContact(contact);
+  // };
+
   console.log(useFetchContactsQuery());
-  const [deleteItem] = useDeleteContactsMutation();
+  const [deleteContact] = useDeleteContactsMutation();
   const [newContact] = useCreateContactsMutation();
-  // useEffect(() => {
-  //   if (error) {
-  //     console.log(error);
-  //     toast.info(
-  //       'Час вашої авторизації вийшов. Перейдіть на домашню сторінку.'
-  //     );
-  //   }
-  // }, [error]);
+  // const [updateContact] = useUpdateContactsMutation();
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const toggleModal = () => setIsModalOpen(state => !state);
+
   // функція для додавання нового контакту
   const addContact = ({ name, number }) => {
     const contact = {
@@ -51,6 +69,18 @@ export default function ContactsView() {
     //  викоpистовумо хук зі слайсу для відобpаження нового ствоpеного контакту
     newContact(contact);
   };
+  const [editedContact, setEditedContact] = useState(null);
+  // функція для збеpігання контакту для редагування
+  const editContact = ({ name, number, id }) => {
+    const contact = {
+      name,
+      number,
+      id,
+    };
+    setEditedContact(contact);
+    // відкривамо модалку
+    toggleModal();
+  };
 
   // функція для збеpігання значення в nолі nошуку
   const changeFilter = e => {
@@ -65,11 +95,6 @@ export default function ContactsView() {
     );
   };
 
-  // return
-  // error ? (
-  // <>there was an error</>
-  // ) : (
-  // toast.info('Упс, щось пішло не так...Спробуйте ще раз')
   return (
     <Container>
       <img
@@ -80,15 +105,18 @@ export default function ContactsView() {
         width="50%"
         height="50%"
       />
+      {/* {isError ? (
+        <Navigate to="/" />
+      ) : ( */}
       <PhonebookContainer>
-        <h1>Phonebook</h1>
+        <Phonebook>Phonebook</Phonebook>
         <AddContactForm onSubmit={addContact} />
         <ToastContainer
           position={'top-center'}
           autoClose={3000}
           theme={'colored'}
         />
-        <h2> Contacts : </h2>
+        <Title> Contacts : </Title>
         <Filter value={value} onChange={changeFilter} />
         {/* nід час виконання заnиту кpутиться сnінеp */}
         {isFetching && <Spinner />}
@@ -96,10 +124,17 @@ export default function ContactsView() {
         {data && (
           <ContactList
             contacts={getVisibleContacts()}
-            onDeleteContact={deleteItem}
+            onDeleteContact={deleteContact}
+            onEditContact={editContact}
           />
         )}
+        {isModalOpen && (
+          <Modal onClose={toggleModal}>
+            <ContactEditor onClose={toggleModal} data={editedContact} />
+          </Modal>
+        )}
       </PhonebookContainer>
+      {/* )} */}
     </Container>
   );
 }

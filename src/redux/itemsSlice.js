@@ -47,10 +47,14 @@ export const contactsApi = createApi({
     }),
     // для оновлення контакту
     updateContacts: builder.mutation({
-      query: contactId => ({
-        url: `/contacts/${contactId}`,
-        method: 'PATCH',
-      }),
+      query(data) {
+        const { contactId, ...body } = data;
+        return {
+          url: `/contacts/${contactId}`,
+          method: 'PATCH',
+          body,
+        };
+      },
       invalidatesTags: ['Contact'],
     }),
   }),
@@ -60,6 +64,7 @@ export const {
   useFetchContactsQuery,
   useDeleteContactsMutation,
   useCreateContactsMutation,
+  useUpdateContactsMutation,
 } = contactsApi;
 
 // import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';

@@ -11,7 +11,7 @@ import {
 } from './ContactList.styled';
 
 // const ContactList = ({ contacts, onDeleteContactList }) => (
-const ContactList = ({ contacts, onDeleteContact }) => (
+const ContactList = ({ contacts, onDeleteContact, onEditContact }) => (
   <List>
     {contacts.map(({ name, number, id }) => (
       <ContactListItem key={id}>
@@ -22,6 +22,13 @@ const ContactList = ({ contacts, onDeleteContact }) => (
         <ContactListButton type="button" onClick={() => onDeleteContact(id)}>
           Видалити
           {/* Delete */}
+        </ContactListButton>
+        <ContactListButton
+          type="button"
+          // contacts={contacts}
+          onClick={() => onEditContact({ name, number, id })}
+        >
+          Редагувати
         </ContactListButton>
       </ContactListItem>
     ))}

@@ -2,15 +2,19 @@ import styled from 'styled-components';
 
 export const Form = styled.form`
   display: flex;
+  justify-content: center;
   flex-direction: column;
-  width: 600px;
+  /* align-items: center; */
+  width: 800px;
   border: 4px solid blue;
+  border-radius: 10px;
   padding: 15px;
-  text-transform: capitalize;
+  margin-bottom: 20px;
+  /* text-transform: capitalize; */
 `;
 
 export const FormLabel = styled.label`
-  font-size: 20px;
+  font-size: 22px;
   display: flex;
   justify-content: space-between;
   font-weight: bold;
@@ -21,7 +25,7 @@ export const FormInput = styled.input`
   width: 70%;
   margin-left: 20px;
   height: 44px;
-  font-size: 14px;
+  font-size: 20px;
   color: blue;
   border: 2px solid rgb(234, 255, 47);
 `;
