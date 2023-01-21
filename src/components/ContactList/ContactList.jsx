@@ -10,7 +10,7 @@ import {
   ContactListButton,
 } from './ContactList.styled';
 
-// const ContactList = ({ contacts, onDeleteContactList }) => (
+
 const ContactList = ({ contacts, onDeleteContact, onEditContact }) => (
   <List>
     {contacts.map(({ name, number, id }) => (
@@ -25,7 +25,6 @@ const ContactList = ({ contacts, onDeleteContact, onEditContact }) => (
         </ContactListButton>
         <ContactListButton
           type="button"
-          // contacts={contacts}
           onClick={() => onEditContact({ name, number, id })}
         >
           Редагувати

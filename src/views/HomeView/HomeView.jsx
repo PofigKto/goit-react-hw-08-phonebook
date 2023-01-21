@@ -10,10 +10,7 @@ export default function HomeView() {
     <Container>
       <img
         src={cat}
-        // src="../../views/HomeView/cat.jpg"
         alt="wellcome"
-        // width="282"
-        // height="282"
         width="30%"
         height="30%"
       />

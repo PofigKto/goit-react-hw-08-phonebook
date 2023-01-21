@@ -5,7 +5,6 @@ import { authSelectors } from '../../redux/auth';
 function Navigation() {
   const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
   return (
-    // якщо не писати всередині ретурн, то використовуемо круглі скобки, бо це те що повертає стрілочна функція.
     <nav>
       <LinkElem to="/">Домашня </LinkElem>
       {isLoggedIn && <LinkElem to="/contacts">КотоКонтакти</LinkElem>}

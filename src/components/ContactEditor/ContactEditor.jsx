@@ -1,9 +1,5 @@
 import React from 'react';
 import { useState } from 'react';
-// import { useParams } from 'react-router-dom';
-// import { connect } from 'react-redux';
-// import { authOperations } from '../../redux/auth';
-// import { useDispatch } from 'react-redux';
 import {
   Form,
   FormLabel,
@@ -18,12 +14,8 @@ export default function ContactEditor({ onClose, data }) {
   console.log(data);
   const [name, setName] = useState(data.name);
   const [number, setNumber] = useState(data.number);
-  // console.log(name);
-  // console.log(number);
 
   const [updateContacts] = useUpdateContactsMutation();
-  // console.log(updateContact);
-  // console.log(useUpdateContactsMutation());
   const handleChange = event => {
     const { name, value } = event.currentTarget;
     switch (name) {
@@ -43,19 +35,10 @@ export default function ContactEditor({ onClose, data }) {
     console.log(name, number);
     const contactId = data.id;
     console.log(contactId);
-    // if (name !== '' && number !== '') {
     updateContacts({ name, number, contactId });
-    // resetForm();
-    // закивамо модалку
     onClose();
     return;
-    // }
-    // alert('Введіть імя та номер');
   };
-  // const resetForm = () => {
-  //   setName('');
-  //   setNumber('');
-  // };
 
   return (
     <>

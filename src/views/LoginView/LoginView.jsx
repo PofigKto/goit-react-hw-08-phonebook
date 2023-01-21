@@ -5,8 +5,6 @@ import {
   LoginFormContainer,
   ImgContainer,
 } from './LoginView.styled';
-// import { ToastContainer } from 'react-toastify';
-// import WellcomeToUkraine from './WellcomeToUkraine.jpg';
 const LoginView = () => (
   <Container>
     {/* <ToastContainer

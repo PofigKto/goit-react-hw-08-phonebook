@@ -2,8 +2,6 @@ import { configureStore } from '@reduxjs/toolkit';
 import { setupListeners } from '@reduxjs/toolkit/query';
 import { filterSlice } from './filterSlice';
 import { contactsApi } from './itemsSlice';
-// import { authSlice } from './auth/auth-slice';
-// import operations from './auth/authOperations';
 import { authReducer } from './auth';
 import {
   persistStore,
@@ -16,7 +14,7 @@ import {
   REGISTER,
 } from 'redux-persist';
 
-import storage from 'redux-persist/lib/storage'; // defaults to localStorage for web
+import storage from 'redux-persist/lib/storage';
 
 const authPersistConfig = {
   key: 'auth',
@@ -24,26 +22,12 @@ const authPersistConfig = {
   whitelist: ['token'],
 };
 
-// const middleware = [
-//   ...getDefaultMiddleware({
-//     serializableCheck: {
-//       ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
-//     },
-//   }),
-// ];
-
-// створюю сховище стор , яке зберігає стан нашого додатку та методи роботи з ним (редюсери) -функціі, які реагують на дії
 export const store = configureStore({
   reducer: {
     filter: filterSlice.reducer,
     auth: persistReducer(authPersistConfig, authReducer),
     [contactsApi.reducerPath]: contactsApi.reducer,
   },
-  // додаемо функціі npослойки з дефолтними значенням та з нашого contactsApi
-  // middleware: getDefaultMiddleware => [
-  //   ...getDefaultMiddleware(),
-  //   contactsApi.middleware,
-  // ],
   middleware: getDefaultMiddleware => [
     ...getDefaultMiddleware({
       serializableCheck: {
@@ -51,8 +35,6 @@ export const store = configureStore({
       },
     }),
     contactsApi.middleware,
-    // operations.middleware,
-    // authReducer.middleware,
   ],
 });
 export const persistor = persistStore(store);

@@ -1,6 +1,5 @@
-// import styled from '@emotion/styled/macro';
+
 import styled from 'styled-components';
-// import { keyframes } from '@emotion/react';
 import { ImSpinner3 } from 'react-icons/im';
 
 const SpinnerEl = styled.div`

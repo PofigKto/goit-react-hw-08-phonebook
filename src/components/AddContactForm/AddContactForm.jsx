@@ -1,4 +1,4 @@
-// import './Form.styled.js';
+
 import {
   Form,
   FormLabel,
@@ -11,8 +11,6 @@ import PropTypes from 'prop-types';
 export default function AddContactForm(props) {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
-  // console.log(name);
-  // console.log(number);
   const handleChange = event => {
     const { name, value } = event.currentTarget;
     switch (name) {

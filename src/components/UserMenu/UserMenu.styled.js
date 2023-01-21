@@ -66,20 +66,3 @@ export const AnimatedButton = styled.button`
   // animation: moveInBottom 5s ease-out;
   animation-fill-mode: backwards;
 `;
-// @keyframes moveInBottom {
-//   0% {
-//     opacity: 0;
-//     transform: translateY(30px);
-//   }
-//   100% {
-//     opacity: 1;
-//     transform: translateY(0px);
-//   }
-// }
-// .pressed {
-//   background-color: #ff6b01;
-//   // background-color: #f1a066;
-//   border: none;
-//   color: $white-text-color;
-// #30ebfc
-// }
